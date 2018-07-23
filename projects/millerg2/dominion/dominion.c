@@ -664,7 +664,8 @@ int villageCard(int card, int choice1, int choice2, int choice3, struct gameStat
 //Function for smithy card
 int smithyCard (int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer){
     //+3 Cards
-    for (int i = 0; i < 4; i++)
+    int i;
+    for (i = 0; i < 4; i++)
     {
         drawCard(currentPlayer, state);
     }
