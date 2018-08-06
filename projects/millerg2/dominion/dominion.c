@@ -647,7 +647,7 @@ int getCost(int cardNumber)
 
 
 //Function for village card
-int villageCard(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer) {
+int villageCard(struct gameState *state, int handPos, int currentPlayer) {
     //+1 Card
     drawCard(currentPlayer, state);
 
@@ -662,7 +662,7 @@ int villageCard(int card, int choice1, int choice2, int choice3, struct gameStat
 
 
 //Function for smithy card
-int smithyCard (int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer){
+int smithyCard (struct gameState *state, int handPos, int currentPlayer){
     //+3 Cards
     int i;
     for (i = 0; i < 4; i++)
@@ -739,7 +739,7 @@ int councilRoomCard(int card, int choice1, int choice2, int choice3, struct game
 
 
 //Function for adventurer card
-int adventurerCard(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus, int currentPlayer) {
+int adventurerCard(struct gameState *state, int handPos, int currentPlayer) {
     int z;
     int cardDrawn;
     int drawntreasure = 0;
@@ -792,7 +792,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      return adventurerCard(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
+      return adventurerCard(state, handPos, currentPlayer);
 			
     case council_room:
       return councilRoomCard(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
@@ -892,10 +892,10 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       return remodelCard(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
 		
     case smithy:
-      return smithyCard(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
+      return smithyCard(state, handPos, currentPlayer);
 		
     case village:
-      return villageCard(card, choice1, choice2, choice3, state, handPos, bonus, currentPlayer);
+      return villageCard(state, handPos, currentPlayer);
 		
     case baron:
       state->numBuys++;//Increase buys by 1!
